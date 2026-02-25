@@ -1,9 +1,9 @@
 
-      const regex = /(?:\d{3})([-])\d{3}\1\d{4}/;
+      const regex = /^(?:\d{3})([-])\d{3}\1\d{3,4}$/;
       let phone = document.getElementById("phone");
       let name = document.getElementById("name");
       let btnSignIn = document.getElementById("btnSignIn");
-      
+            
       
       function phoneNumber() {
         if (

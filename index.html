@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Practice 01</title>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-clifford: #da373d;
+        --animate-scale: scale 5s ease-in-out infinite;
+        @keyframes scale {
+          0% {
+            transform: rotate(0deg);
+          
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h2
+        class="italic text-center text-2xl py-5 underline decoration-red-500 decoration-wavy underline-offset-4"
+      >
+        phone number fomation
+      </h2>
+      <div class="w-[500px] mx-auto mt-2 p-6 border border-gray-300 rounded-xl">
+        <input
+          type="text"
+          id="name"
+          class="border border-gray-300 rounded px-3 py-2 w-full mb-4"
+          placeholder="Enter Name"
+        />
+        <input
+          type="text"
+          id="phone"
+          class="border border-gray-300 rounded px-3 py-2 w-full mb-4"
+          placeholder="Enter phone number"
+        />
+        <button
+          id="btnSignIn"
+          onclick="phoneNumber()"
+          class="bg-blue-500 text-white px-4 py-2 rounded cursor-pointer"
+        >
+          Sign In
+        </button>
+
+        <p id="name1" class="mt-5 text-[20px]">
+          <span class="text-blue-500">Name :</span>
+        </p>
+        <p id="phoneNumber" class="text-[20px]">
+          <span class="text-blue-500">Phone Number :</span>
+        </p>
+      </div>
+
+      <h2
+        class="italic text-center text-2xl py-5 underline decoration-red-500 decoration-wavy underline-offset-4 mt-3"
+      >
+        Alarm
+      </h2>
+      <div class="alarm flex justify-center items-center gap-5">
+        <div
+          
+          class="w-[250px] h-[250px] bg-gray-100 rounded-full border-[2px] border-sky-500 flex justify-center items-center text-[40px] font-bold text-gray-700 "
+        >
+        <p id="time11" class="animate-scale"></p>
+      </div>
+        <div>
+          <button
+            onclick="StartTime()"
+            class="py-2 px-10 cursor-pointer bg-blue-500 text-white font-semibold italic rounded-xl"
+          >
+            Start
+          </button>
+          <br />
+          <button
+            onclick="stopTime()"
+            class="py-2 px-10 cursor-pointer bg-yellow-500 text-white font-semibold italic rounded-xl my-6"
+          >
+            Stop
+          </button>
+          <br />
+          <button
+            onclick="resetTime()"
+            class="py-2 px-10 cursor-pointer bg-red-500 text-white font-semibold italic rounded-xl"
+          >
+            Reset
+          </button>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script>
+      const regex = /(?:\d{3})([-])\d{3}\1\d{4}/;
+      let phone = document.getElementById("phone");
+      let name = document.getElementById("name");
+      let btnSignIn = document.getElementById("btnSignIn");
+      function phoneNumber() {
+        if (
+          !regex.test(phone.value) ||
+          name.value.length < 0 ||
+          name.value.length == " "
+        ) {
+          alert("Invalid Name or Phone Number!");
+        } else {
+          alert("Succesfully!");
+          document.getElementById("name1").innerHTML += name.value;
+          document.getElementById("phoneNumber").innerHTML += phone.value;
+        }
+      }
+
+      // time
+
+      let isStop = false;
+      let timeRun;
+      let realTime;
+      let time11 = document.getElementById("time11");
+      time11.innerHTML = "00:00:00";
+
+      let newTime = Intl.DateTimeFormat("km-KH", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      });
+
+      let resetTime = function () {
+        time11.innerHTML = "00:00:00";
+        clearInterval(timeRun);
+        isStop = false;
+        time11.classList.add("animate-scale");
+      };
+
+      let stopTime = function () {
+        if (isStop) {
+          clearInterval(timeRun);
+          isStop = false;
+        }
+      };
+
+      function StartTime() {
+        realTime = function () {
+          let date = new Date();
+          time11.innerHTML = newTime.format(date);
+        };
+        timeRun = setInterval(realTime, 1000);
+        isStop = true;
+        time11.classList.remove("animate-scale");
+      }
+    </script>
+  </body>
+</html>

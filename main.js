@@ -3,6 +3,8 @@
       let phone = document.getElementById("phone");
       let name = document.getElementById("name");
       let btnSignIn = document.getElementById("btnSignIn");
+      
+      
       function phoneNumber() {
         if (
           !regex.test(phone.value) ||
@@ -14,6 +16,8 @@
           alert("Succesfully!");
           document.getElementById("name1").innerHTML += name.value;
           document.getElementById("phoneNumber").innerHTML += phone.value;
+          name.value = "";
+          phone.value = "";
         }
       }
 

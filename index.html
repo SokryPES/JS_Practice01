@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS Practice 01</title>
     <style type="text/tailwindcss">
+      
       @theme {
         --color-clifford: #da373d;
         --animate-scale: scale 5s ease-in-out infinite;
         @keyframes scale {
           0% {
             transform: rotate(0deg);
-          
           }
           100% {
             transform: rotate(360deg);
@@ -63,11 +63,10 @@
       </h2>
       <div class="alarm flex justify-center items-center gap-5">
         <div
-          
-          class="w-[250px] h-[250px] bg-gray-100 rounded-full border-[2px] border-sky-500 flex justify-center items-center text-[40px] font-bold text-gray-700 "
+          class="w-[250px] h-[250px] bg-gray-100 rounded-full border-[2px] border-sky-500 flex justify-center items-center text-[40px] font-bold text-gray-700"
         >
-        <p id="time11" class="animate-scale"></p>
-      </div>
+          <p id="time11" class="animate-scale"></p>
+        </div>
         <div>
           <button
             onclick="StartTime()"

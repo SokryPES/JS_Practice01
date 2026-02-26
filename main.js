@@ -29,7 +29,8 @@
       let time11 = document.getElementById("time11");
       time11.innerHTML = "00:00:00";
 
-      let newTime = Intl.DateTimeFormat("km-KH", {
+      let newTime = new Intl.DateTimeFormat("km-KH", {
+        timeZone: "Asia/Phnom_Penh",
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
